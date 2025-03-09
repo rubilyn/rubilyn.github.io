@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .app-card {
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            text-align: center;
+        }
+        .app-card img {
+            width: 100%;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+        }
+        .app-card img:hover {
+            transform: scale(1.05);
+        }
+        .app-card h3 {
+            font-size: 18px;
+            margin: 10px 0 5px;
+        }
+        .app-card p {
+            color: #555;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>App Portfolio</h1>
+    <div class="container" id="appContainer"></div>
+
+    <script>
+        const apps = [
+            {
+                order: 1,
+                name: "Graduation 2020",
+                artwork: "https://is5-ssl.mzstatic.com/image/thumb/Purple113/v4/32/92/93/32929319-a44f-1e10-2bc0-58460f314304/AppIcon-0-0-1x_U007emarketing-0-0-0-0-0-5-sRGB-0-0-0-GLES2_U002c0-512MB-85-181-0-0.png/460x344sr.png",
+                url: "https://apps.apple.com/us/app/graduation-2020/id1514998693",
+                genre: "Stickers",
+            },
+            {
+                order: 2,
+                name: "Congratulations Graduates 2020",
+                artwork: "https://is3-ssl.mzstatic.com/image/thumb/Purple123/v4/23/9a/cd/239acd30-153a-425f-842c-3f6f29f1f792/iMessage_App_Icon-0-0-1x_U007emarketing-0-0-0-0-0-3-sRGB-0-0-0-GLES2_U002c0-512MB-85-181-0-0.png/460x344sr.png",
+                url: "https://apps.apple.com/us/app/congratulations-graduates-2020/id1207652589?ls=1",
+                genre: "Stickers",
+            },
+            {
+                order: 3,
+                name: "Congratulations Graduates",
+                artwork: "https://is4-ssl.mzstatic.com/image/thumb/Purple114/v4/c5/ca/71/c5ca7124-049b-a169-ae7d-466d7927d3a4/AppIcon-0-0-1x_U007emarketing-0-0-0-0-0-5-sRGB-0-0-0-GLES2_U002c0-512MB-85-181-0-0.png/460x344sr.png",
+                url: "https://apps.apple.com/us/app/congratulations-graduates/id1390350547?ls=1",
+                genre: "Stickers",
+            },
+            {
+                name: "Drops - Your IV Drip Rate Companion",
+                artwork: "https://is4-ssl.mzstatic.com/image/thumb/Purple7/v4/05/23/28/0523285a-6a40-7f37-3c7f-7de84f736f1e/source/512x512bb.jpg",
+                url: "https://apps.apple.com/us/app/drops-your-iv-drip-rate-companion/id991594421?uo=4",
+                genre: "Medical",
+            },
+        ];
+
+        // Sort apps by order (items without an order go last)
+        apps.sort((a, b) => (a.order ?? Infinity) - (b.order ?? Infinity));
+
+        const container = document.getElementById("appContainer");
+
+        apps.forEach(app => {
+            const card = document.createElement("div");
+            card.className = "app-card";
+
+            card.innerHTML = `
+                <img src="${app.artwork}" alt="${app.name}" onclick="window.open('${app.url}', '_blank')">
+                <h3>${app.name}</h3>
+                <p>${app.genre}</p>
+            `;
+
+            container.appendChild(card);
+        });
+    </script>
+
+</body>
+</html>
